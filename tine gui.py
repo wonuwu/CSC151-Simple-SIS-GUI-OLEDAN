@@ -92,11 +92,14 @@ class Student:
                 tkinter.messagebox.showerror("Student Information System","Please select a student record from the table")
                 return
             id_no = tree.item(tree.focus(),"values")[0]
-            
-            self.data.pop(id_no, None)
-            self.saveData()
-            tree.delete(tree.focus())
-            tkinter.messagebox.showinfo("Student Information System","Student Record Deleted Successfully")
+            deleteData = tkinter.messagebox.askyesno(" Student Information System", "Do you wish to delete this record?")
+            if deleteData > 0:
+
+                self.data.pop(id_no, None)
+                self.saveData()
+                tree.delete(tree.focus())
+                
+                tkinter.messagebox.showinfo("Student Information System","Student Record Deleted Successfully")
             
         
         
